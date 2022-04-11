@@ -1,2 +1,2 @@
 # Who I am?
-It's personal web
+It's my personal web
