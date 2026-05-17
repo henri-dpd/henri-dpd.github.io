@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { navLinks } from "@/data/portfolio";
 
 export default function Navbar() {
@@ -25,14 +26,17 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#inicio" className="flex items-center gap-1 group">
-            <span className="font-heading font-bold text-xl text-white tracking-tight">
-              Henri
+          <a href="#inicio" className="flex items-center gap-2 group">
+            <Image
+              src="/icons/icon-128.png"
+              alt="Henri Peña"
+              width={32}
+              height={32}
+              className="rounded-sm"
+            />
+            <span className="font-heading font-bold text-base text-white tracking-tight">
+              Henri Peña
             </span>
-            <span className="font-heading font-bold text-xl text-[#00f0ff]">
-              .
-            </span>
-            <span className="font-mono text-xs text-[#94a3b8] mt-1">dev</span>
           </a>
 
           {/* Desktop Nav */}

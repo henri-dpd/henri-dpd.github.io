@@ -6,8 +6,8 @@ import Footer from "@/components/Footer";
 describe("Navbar", () => {
   it("renders the logo signature", () => {
     render(<Navbar />);
-    expect(screen.getByText("Henri")).toBeInTheDocument();
-    expect(screen.getByText("dev")).toBeInTheDocument();
+    expect(screen.getByAltText("Henri Peña")).toBeInTheDocument();
+    expect(screen.getByText("Henri Peña")).toBeInTheDocument();
   });
 
   it("renders all navigation links", () => {
