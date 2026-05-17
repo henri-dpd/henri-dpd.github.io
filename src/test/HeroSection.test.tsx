@@ -5,10 +5,7 @@ import HeroSection from "@/components/HeroSection";
 describe("HeroSection", () => {
   it("renders the main heading with the full name", () => {
     render(<HeroSection />);
-    // Each word is in its own element — look for each
-    expect(screen.getByText("Henri")).toBeInTheDocument();
-    expect(screen.getByText("Daniel")).toBeInTheDocument();
-    expect(screen.getByText("Peña")).toBeInTheDocument();
+    expect(screen.getByText("Henri Peña")).toBeInTheDocument();
   });
 
   it("renders the badge label", () => {

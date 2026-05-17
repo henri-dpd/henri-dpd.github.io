@@ -32,16 +32,10 @@ export default function HeroSection() {
 
             {/* Heading */}
             <div>
-              <h1 className="font-heading font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-none tracking-tight">
+              <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight">
                 <span className="bg-gradient-to-br from-white via-white to-[#00f0ff] bg-clip-text text-transparent">
-                  Henri
+                  Henri Peña
                 </span>
-                <br />
-                <span className="bg-gradient-to-br from-white via-white to-[#00f0ff] bg-clip-text text-transparent">
-                  Daniel
-                </span>
-                <br />
-                <span className="text-white">Peña</span>
               </h1>
             </div>
 
