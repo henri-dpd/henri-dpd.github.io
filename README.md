@@ -101,45 +101,9 @@ El proyecto está configurado para exportación estática (`output: 'export'`). 
 
 El archivo `public/.nojekyll` evita que GitHub Pages ignore archivos con guión bajo (`_next/`).
 
-### CI/CD Recomendado (GitHub Actions)
+### CI/CD (GitHub Actions)
 
-Crea `.github/workflows/deploy.yml`:
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [main]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-        env:
-          NEXT_PUBLIC_FORMSPREE_ID: ${{ secrets.NEXT_PUBLIC_FORMSPREE_ID }}
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: out
-      - id: deployment
-        uses: actions/deploy-pages@v4
-```
+El workflow en [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) se ejecuta en cada push a `main`: instala dependencias, hace el build estático y despliega a GitHub Pages automáticamente.
 
 Añade `NEXT_PUBLIC_FORMSPREE_ID` como **Repository Secret** en **Settings → Secrets and variables → Actions**.
 
