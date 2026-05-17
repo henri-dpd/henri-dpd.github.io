@@ -219,8 +219,7 @@ export default function ContactSection() {
                 </span>
               </div>
               <p className="text-[#94a3b8] text-xs leading-relaxed">
-                Abierto a proyectos remotos, consultorías freelance y
-                oportunidades de contratación a tiempo completo.
+                Abierto a proyectos remotos y consultorías freelance.
               </p>
             </div>
           </div>
