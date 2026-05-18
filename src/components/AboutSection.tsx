@@ -41,7 +41,7 @@ export default function AboutSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left – Vision */}
-          <div className="space-y-6">
+          <div className="space-y-6 animate-on-scroll-left">
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-white leading-tight">
               No es solo código,
               <br />
@@ -72,11 +72,11 @@ export default function AboutSection() {
           </div>
 
           {/* Right – Highlights grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-2 animate-on-scroll-right">
             {highlights.map(({ Icon, label, description }) => (
               <div
                 key={label}
-                className="p-5 rounded-xl border border-[#1e293b] bg-[#111827] hover:border-[#00f0ff]/30 hover:bg-[#162235] transition-all duration-300"
+                className="p-5 rounded-xl border border-[#1e293b] bg-[#111827] hover:border-[#00f0ff]/30 hover:bg-[#162235] transition-all duration-300 animate-scale-in"
               >
                 <Icon size={20} className="text-[#00f0ff] mb-3" />
                 <h3 className="text-white font-heading font-semibold text-sm mb-1.5">

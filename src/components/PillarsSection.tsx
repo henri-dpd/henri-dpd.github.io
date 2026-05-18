@@ -5,7 +5,7 @@ function PillarCard({ pillar }: { pillar: PillarItem }) {
   const { icon: Icon, title, description, tags } = pillar;
 
   return (
-    <div className="group relative p-7 rounded-xl border border-[#1e293b] bg-[#111827] hover:border-[#00f0ff]/50 hover:bg-[#162235] transition-all duration-300 flex flex-col">
+    <div className="group relative p-7 rounded-xl border border-[#1e293b] bg-[#111827] hover:border-[#00f0ff]/50 hover:bg-[#162235] transition-all duration-300 flex flex-col animate-scale-in">
       {/* Top accent line on hover */}
       <div className="absolute top-0 left-6 right-6 h-px bg-[#00f0ff]/0 group-hover:bg-[#00f0ff]/40 transition-all duration-300 rounded-full" />
 
@@ -45,7 +45,7 @@ export default function PillarsSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-14 animate-on-scroll">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="h-px w-10 bg-[#00f0ff]" />
             <span className="text-[#00f0ff] text-xs font-heading font-medium uppercase tracking-widest">
@@ -62,7 +62,7 @@ export default function PillarsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-3">
           {pillars.map((pillar) => (
             <PillarCard key={pillar.id} pillar={pillar} />
           ))}

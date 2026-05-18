@@ -29,6 +29,24 @@ export const metadata: Metadata = {
     "Full Stack",
     "Next.js",
   ],
+  metadataBase: new URL("https://henri-dpd.github.io"),
+  openGraph: {
+    type: "website",
+    url: "https://henri-dpd.github.io",
+    title: "Henri Peña | Ingeniería de Software & Ciberseguridad",
+    description:
+      "Full Stack Engineer y Especialista en Ciberseguridad. Sistemas resilientes, Cloud-Native y seguridad por diseño.",
+    images: [{ url: "/icons/icon-1024.png", width: 1024, height: 1024, alt: "Henri Peña" }],
+    siteName: "Henri Peña",
+    locale: "es_ES",
+  },
+  twitter: {
+    card: "summary",
+    title: "Henri Peña | Ingeniería de Software & Ciberseguridad",
+    description:
+      "Full Stack Engineer y Especialista en Ciberseguridad. Sistemas resilientes, Cloud-Native y seguridad por diseño.",
+    images: ["/icons/icon-1024.png"],
+  },
   icons: {
     icon: [
       { url: "/icons/icon-128.png", sizes: "128x128", type: "image/png" },

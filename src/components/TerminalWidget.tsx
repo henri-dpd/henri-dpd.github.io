@@ -1,10 +1,12 @@
+import { terminalStatus, terminalSummary } from "@/data/portfolio";
+
 export default function TerminalWidget() {
   return (
-    <div className="relative w-full max-w-md mx-auto">
+    <div className="relative w-full max-w-md mx-auto animate-float">
       {/* Ambient glow */}
       <div className="absolute -inset-6 bg-[#00f0ff]/5 rounded-3xl blur-2xl pointer-events-none" />
 
-      <div className="relative rounded-xl border border-[#1e293b] bg-[#0d1224] overflow-hidden shadow-2xl">
+      <div className="relative rounded-xl border border-[#1e293b] bg-[#0d1224] overflow-hidden shadow-2xl animate-glow-pulse">
         {/* Title bar */}
         <div className="flex items-center gap-2 px-4 py-3 border-b border-[#1e293b] bg-[#0b0f19]">
           <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
@@ -24,26 +26,13 @@ export default function TerminalWidget() {
           </div>
 
           <div className="pl-4 space-y-1.5 text-xs">
-            <div className="flex items-center gap-3">
-              <span className="text-green-400">✓</span>
-              <span className="text-[#94a3b8] w-32">Full Stack Engineer</span>
-              <span className="text-[#00f0ff]">[ACTIVE]</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-green-400">✓</span>
-              <span className="text-[#94a3b8] w-32">Cloud Architecture</span>
-              <span className="text-[#00f0ff]">[ACTIVE]</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-green-400">✓</span>
-              <span className="text-[#94a3b8] w-32">Cybersecurity</span>
-              <span className="text-[#00f0ff]">[ACTIVE]</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-green-400">✓</span>
-              <span className="text-[#94a3b8] w-32">AI Integration</span>
-              <span className="text-[#00f0ff]">[ACTIVE]</span>
-            </div>
+            {terminalStatus.map(({ label, status }) => (
+              <div key={label} className="flex items-center gap-3">
+                <span className="text-green-400">✓</span>
+                <span className="text-[#94a3b8] w-36">{label}</span>
+                <span className="text-[#00f0ff]">[{status}]</span>
+              </div>
+            ))}
           </div>
 
           <div className="flex items-center gap-2 pt-1">
@@ -55,19 +44,19 @@ export default function TerminalWidget() {
           <div className="pl-4 space-y-1 text-xs">
             <div>
               <span className="text-[#94a3b8]">years: </span>
-              <span className="text-white font-semibold">5+</span>
+              <span className="text-white font-semibold">{terminalSummary.years}</span>
             </div>
             <div>
               <span className="text-[#94a3b8]">stack: </span>
-              <span className="text-[#00f0ff]">AWS · Node.js · Next.js · C#</span>
+              <span className="text-[#00f0ff]">{terminalSummary.stack}</span>
             </div>
             <div>
               <span className="text-[#94a3b8]">focus: </span>
-              <span className="text-white">Serverless · Security · DDD</span>
+              <span className="text-white">{terminalSummary.focus}</span>
             </div>
             <div>
               <span className="text-[#94a3b8]">location: </span>
-              <span className="text-white">Remote · Global</span>
+              <span className="text-white">{terminalSummary.location}</span>
             </div>
           </div>
 

@@ -23,7 +23,7 @@ export default function HeroSection() {
           {/* Left column */}
           <div className="space-y-7">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#00f0ff]/30 bg-[#00f0ff]/5">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#00f0ff]/30 bg-[#00f0ff]/5 animate-border-glow">
               <div className="w-1.5 h-1.5 rounded-full bg-[#00f0ff] animate-pulse" />
               <span className="text-[#00f0ff] text-xs font-heading font-medium tracking-widest uppercase">
                 Sistemas Resilientes
@@ -33,7 +33,7 @@ export default function HeroSection() {
             {/* Heading */}
             <div>
               <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight">
-                <span className="bg-gradient-to-br from-white via-white to-[#00f0ff] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white via-[#00f0ff] to-white bg-clip-text text-transparent animate-shimmer">
                   Henri Peña
                 </span>
               </h1>
@@ -56,7 +56,7 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3 pt-1">
               <a
                 href="#experiencia"
-                className="inline-flex items-center justify-center px-7 py-3 rounded-lg bg-[#00f0ff] text-[#0b0f19] font-heading font-bold text-sm tracking-wide hover:bg-[#00f0ff]/90 transition-all duration-200 shadow-[0_0_24px_rgba(0,240,255,0.35)]"
+                className="inline-flex items-center justify-center px-7 py-3 rounded-lg bg-[#00f0ff] text-[#0b0f19] font-heading font-bold text-sm tracking-wide hover:bg-[#00f0ff]/90 transition-all duration-200 shadow-[0_0_24px_rgba(0,240,255,0.35)] animate-glow-pulse"
               >
                 Ver Proyectos
               </a>

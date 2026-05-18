@@ -31,3 +31,15 @@ export interface WriteupCard {
   title: string;
   description: string;
 }
+
+export interface TerminalStatusItem {
+  label: string;
+  status: string;
+}
+
+export interface TerminalSummary {
+  years: string;
+  stack: string;
+  focus: string;
+  location: string;
+}

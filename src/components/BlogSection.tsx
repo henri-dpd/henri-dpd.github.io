@@ -1,3 +1,4 @@
+import { Github } from "lucide-react";
 import { writeupCards } from "@/data/portfolio";
 import type { WriteupCard } from "@/types";
 
@@ -5,7 +6,7 @@ function WriteupCardComponent({ card }: { card: WriteupCard }) {
   const { icon: Icon, tag, title, description } = card;
 
   return (
-    <div className="group relative p-8 rounded-xl border border-[#1e293b] bg-[#111827] hover:border-[#00f0ff]/40 hover:bg-[#162235] transition-all duration-300 flex flex-col">
+    <div className="group relative p-8 rounded-xl border border-[#1e293b] bg-[#111827] hover:border-[#00f0ff]/40 hover:bg-[#162235] transition-all duration-300 flex flex-col animate-on-scroll">
       {/* Top accent line on hover */}
       <div className="absolute top-0 left-8 right-8 h-px bg-[#00f0ff]/0 group-hover:bg-[#00f0ff]/40 transition-all duration-300 rounded-full" />
 
@@ -29,12 +30,17 @@ function WriteupCardComponent({ card }: { card: WriteupCard }) {
         {description}
       </p>
 
-      {/* Status */}
+      {/* CTA */}
       <div className="mt-6">
-        <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#1e293b] text-[#94a3b8] text-xs font-medium">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#94a3b8]/50" />
-          Próximamente
-        </span>
+        <a
+          href="https://github.com/henri-dpd"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#1e293b] text-[#94a3b8] text-xs font-medium hover:border-[#00f0ff]/40 hover:text-[#00f0ff] transition-all duration-200"
+        >
+          <Github size={13} />
+          Ver en GitHub
+        </a>
       </div>
     </div>
   );

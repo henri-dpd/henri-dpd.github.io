@@ -124,3 +124,17 @@ export const writeupCards: WriteupCard[] = [
       "Artículos enfocados en arquitecturas Cloud-Native, estrategias de optimización de costos en AWS e integración práctica de IA para agilizar procesos internos empresariales.",
   },
 ];
+
+export const terminalStatus: import("@/types").TerminalStatusItem[] = [
+  { label: "Full Stack Engineer", status: "ACTIVE" },
+  { label: "Cloud Architecture",  status: "ACTIVE" },
+  { label: "Cybersecurity",        status: "ACTIVE" },
+  { label: "AI Integration",       status: "ACTIVE" },
+];
+
+export const terminalSummary: import("@/types").TerminalSummary = {
+  years:    "5+",
+  stack:    "AWS · Node.js · Next.js · C#",
+  focus:    "Serverless · Security · DDD",
+  location: "Remote · Global",
+};
