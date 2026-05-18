@@ -4,7 +4,7 @@ export default function TerminalWidget() {
   return (
     <div className="relative w-full max-w-md mx-auto animate-float">
       {/* Ambient glow */}
-      <div className="absolute -inset-6 bg-[#00f0ff]/5 rounded-3xl blur-2xl pointer-events-none" />
+      <div className="absolute -inset-6 bg-accent/5 rounded-3xl blur-2xl pointer-events-none" />
 
       <div className="relative rounded-xl border border-[#1e293b] bg-[#0d1224] overflow-hidden shadow-2xl animate-glow-pulse">
         {/* Title bar */}
@@ -20,9 +20,9 @@ export default function TerminalWidget() {
         {/* Body */}
         <div className="p-5 font-mono text-xs sm:text-sm space-y-3">
           <div className="flex items-center gap-2">
-            <span className="text-[#00f0ff] select-none">❯</span>
+            <span className="text-accent select-none">❯</span>
             <span className="text-[#94a3b8]">portfolio</span>
-            <span className="text-[#00f0ff]">--status</span>
+            <span className="text-accent">--status</span>
           </div>
 
           <div className="pl-4 space-y-1.5 text-xs">
@@ -30,15 +30,15 @@ export default function TerminalWidget() {
               <div key={label} className="flex items-center gap-3">
                 <span className="text-green-400">✓</span>
                 <span className="text-[#94a3b8] w-36">{label}</span>
-                <span className="text-[#00f0ff]">[{status}]</span>
+                <span className="text-accent">[{status}]</span>
               </div>
             ))}
           </div>
 
           <div className="flex items-center gap-2 pt-1">
-            <span className="text-[#00f0ff] select-none">❯</span>
+            <span className="text-accent select-none">❯</span>
             <span className="text-[#94a3b8]">experience</span>
-            <span className="text-[#00f0ff]">--summary</span>
+            <span className="text-accent">--summary</span>
           </div>
 
           <div className="pl-4 space-y-1 text-xs">
@@ -48,7 +48,7 @@ export default function TerminalWidget() {
             </div>
             <div>
               <span className="text-[#94a3b8]">stack: </span>
-              <span className="text-[#00f0ff]">{terminalSummary.stack}</span>
+              <span className="text-accent">{terminalSummary.stack}</span>
             </div>
             <div>
               <span className="text-[#94a3b8]">focus: </span>
@@ -61,7 +61,7 @@ export default function TerminalWidget() {
           </div>
 
           <div className="flex items-center gap-2 pt-1">
-            <span className="text-[#00f0ff] select-none">❯</span>
+            <span className="text-accent select-none">❯</span>
             <span className="text-white animate-pulse">▋</span>
           </div>
         </div>

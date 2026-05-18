@@ -1,7 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 
 export interface NavLink {
-  label: string;
+  /** i18n key under nav.* (e.g. "home", "about") */
+  id: string;
   href: string;
 }
 
@@ -11,25 +12,19 @@ export interface Role {
   location: string;
   period: string;
   current: boolean;
-  title: string;
-  description: string;
   badges: string[];
 }
 
 export interface PillarItem {
   id: string;
   icon: LucideIcon;
-  title: string;
-  description: string;
+  /** Tech-name tags — not translated */
   tags: string[];
 }
 
 export interface WriteupCard {
   id: string;
   icon: LucideIcon;
-  tag: string;
-  title: string;
-  description: string;
 }
 
 export interface TerminalStatusItem {

@@ -5,7 +5,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 describe("ExperienceSection", () => {
   it("renders the section heading", () => {
     render(<ExperienceSection />);
-    expect(screen.getByText("Matriz de Experiencia")).toBeInTheDocument();
+    expect(screen.getByText("Experience Matrix")).toBeInTheDocument();
   });
 
   it("renders all six roles", () => {
@@ -25,14 +25,14 @@ describe("ExperienceSection", () => {
 
   it("marks the current role with an 'Activo' badge", () => {
     render(<ExperienceSection />);
-    expect(screen.getByText("Activo")).toBeInTheDocument();
+    expect(screen.getByText("Active")).toBeInTheDocument();
   });
 
   it("renders location and period metadata in role headers", () => {
     render(<ExperienceSection />);
     // Multiple roles share "Remoto · España" — assert at least one exists
-    expect(screen.getAllByText("Remoto · España").length).toBeGreaterThanOrEqual(1);
-    expect(screen.getByText("Feb 2026 – Actualidad")).toBeInTheDocument();
+    expect(screen.getAllByText("Remote · Spain").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText("Feb 2026 – Present")).toBeInTheDocument();
   });
 
   it("opens the current role accordion by default", () => {

@@ -6,16 +6,16 @@ import ContactSection from "@/components/ContactSection";
 describe("ContactSection", () => {
   it("renders the section heading", () => {
     render(<ContactSection />);
-    expect(screen.getByText("¿Hablamos?")).toBeInTheDocument();
+    expect(screen.getByText("Let\u2019s Talk?")).toBeInTheDocument();
   });
 
   it("renders all form fields and submit button", () => {
     render(<ContactSection />);
-    expect(screen.getByLabelText(/Nombre/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Email/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Mensaje/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Message/i)).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /Enviar Mensaje/i })
+      screen.getByRole("button", { name: /Send Message/i })
     ).toBeInTheDocument();
   });
 
@@ -54,14 +54,14 @@ describe("ContactSection", () => {
     it("shows success message after successful submission", async () => {
       render(<ContactSection />);
 
-      await user.type(screen.getByLabelText(/Nombre/i), "Test User");
+      await user.type(screen.getByLabelText(/Name/i), "Test User");
       await user.type(screen.getByLabelText(/Email/i), "test@example.com");
-      await user.type(screen.getByLabelText(/Mensaje/i), "Hello from test");
-      await user.click(screen.getByRole("button", { name: /Enviar Mensaje/i }));
+      await user.type(screen.getByLabelText(/Message/i), "Hello from test");
+      await user.click(screen.getByRole("button", { name: /Send Message/i }));
 
       await waitFor(() => {
         expect(
-          screen.getByText(/Mensaje enviado correctamente/i)
+          screen.getByText(/Message sent successfully/i)
         ).toBeInTheDocument();
       });
     });
@@ -73,14 +73,14 @@ describe("ContactSection", () => {
       );
       render(<ContactSection />);
 
-      await user.type(screen.getByLabelText(/Nombre/i), "Test User");
+      await user.type(screen.getByLabelText(/Name/i), "Test User");
       await user.type(screen.getByLabelText(/Email/i), "test@example.com");
-      await user.type(screen.getByLabelText(/Mensaje/i), "Hello from test");
-      await user.click(screen.getByRole("button", { name: /Enviar Mensaje/i }));
+      await user.type(screen.getByLabelText(/Message/i), "Hello from test");
+      await user.click(screen.getByRole("button", { name: /Send Message/i }));
 
       await waitFor(() => {
         expect(
-          screen.getByText(/Hubo un error/i)
+          screen.getByText(/There was an error/i)
         ).toBeInTheDocument();
       });
     });

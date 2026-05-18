@@ -13,12 +13,12 @@ describe("Navbar", () => {
   it("renders all navigation links", () => {
     render(<Navbar />);
     const labels = [
-      "Inicio",
-      "Sobre Mí",
-      "Pilares",
-      "Experiencia",
+      "Home",
+      "About",
+      "Pillars",
+      "Experience",
       "Write-ups",
-      "Contacto",
+      "Contact",
     ];
     for (const label of labels) {
       expect(screen.getAllByText(label).length).toBeGreaterThanOrEqual(1);

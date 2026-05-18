@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Mail, Linkedin, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface FormState {
   name: string;
@@ -12,6 +13,7 @@ interface FormState {
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function ContactSection() {
+  const { t } = useTranslation();
   const [form, setForm] = useState<FormState>({
     name: "",
     email: "",
@@ -50,7 +52,7 @@ export default function ContactSection() {
   };
 
   const inputClass =
-    "w-full px-4 py-3 rounded-lg bg-[#0d1224] border border-[#1e293b] text-white placeholder-[#94a3b8]/40 text-sm font-sans focus:outline-none focus:border-[#00f0ff]/50 focus:ring-1 focus:ring-[#00f0ff]/20 transition-colors";
+    "w-full px-4 py-3 rounded-lg bg-navy border border-edge text-fore placeholder-muted/40 text-sm font-sans focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-colors";
 
   return (
     <section id="contacto" className="py-24">
@@ -58,35 +60,34 @@ export default function ContactSection() {
         {/* Header */}
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="h-px w-10 bg-[#00f0ff]" />
-            <span className="text-[#00f0ff] text-xs font-heading font-medium uppercase tracking-widest">
-              Contacto
+            <div className="h-px w-10 bg-accent" />
+            <span className="text-accent text-xs font-heading font-medium uppercase tracking-widest">
+              {t("contact.label")}
             </span>
-            <div className="h-px w-10 bg-[#00f0ff]" />
+            <div className="h-px w-10 bg-accent" />
           </div>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-white">
-            ¿Hablamos?
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-fore">
+            {t("contact.heading")}
           </h2>
-          <p className="text-[#94a3b8] mt-3 max-w-xl mx-auto text-sm leading-relaxed">
-            Disponible para proyectos corporativos, consultorías técnicas y
-            colaboraciones remotas.
+          <p className="text-muted mt-3 max-w-xl mx-auto text-sm leading-relaxed">
+            {t("contact.description")}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           {/* Form */}
-          <div className="p-8 rounded-xl border border-[#1e293b] bg-[#111827]">
-            <h3 className="font-heading font-semibold text-white text-lg mb-6">
-              Envía un mensaje
+          <div className="p-8 rounded-xl border border-edge bg-card">
+            <h3 className="font-heading font-semibold text-fore text-lg mb-6">
+              {t("contact.formHeading")}
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-[#94a3b8] text-xs font-medium uppercase tracking-wider mb-2"
+                  className="block text-muted text-xs font-medium uppercase tracking-wider mb-2"
                 >
-                  Nombre
+                  {t("contact.name")}
                 </label>
                 <input
                   id="name"
@@ -96,7 +97,7 @@ export default function ContactSection() {
                   autoComplete="name"
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="Tu nombre completo"
+                  placeholder={t("contact.namePlaceholder")}
                   className={inputClass}
                 />
               </div>
@@ -104,9 +105,9 @@ export default function ContactSection() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-[#94a3b8] text-xs font-medium uppercase tracking-wider mb-2"
+                  className="block text-muted text-xs font-medium uppercase tracking-wider mb-2"
                 >
-                  Email
+                  {t("contact.email")}
                 </label>
                 <input
                   id="email"
@@ -116,7 +117,7 @@ export default function ContactSection() {
                   autoComplete="email"
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="tu@email.com"
+                  placeholder={t("contact.emailPlaceholder")}
                   className={inputClass}
                 />
               </div>
@@ -124,9 +125,9 @@ export default function ContactSection() {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-[#94a3b8] text-xs font-medium uppercase tracking-wider mb-2"
+                  className="block text-muted text-xs font-medium uppercase tracking-wider mb-2"
                 >
-                  Mensaje
+                  {t("contact.message")}
                 </label>
                 <textarea
                   id="message"
@@ -135,31 +136,31 @@ export default function ContactSection() {
                   rows={5}
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="Cuéntame sobre tu proyecto..."
+                  placeholder={t("contact.messagePlaceholder")}
                   className={`${inputClass} resize-none`}
                 />
               </div>
 
               {status === "success" && (
-                <div className="flex items-center gap-2 text-green-400 text-sm">
+                <div className="flex items-center gap-2 text-green-500 text-sm">
                   <CheckCircle size={16} />
-                  <span>¡Mensaje enviado correctamente!</span>
+                  <span>{t("contact.success")}</span>
                 </div>
               )}
               {status === "error" && (
-                <div className="flex items-center gap-2 text-red-400 text-sm">
+                <div className="flex items-center gap-2 text-red-500 text-sm">
                   <AlertCircle size={16} />
-                  <span>Hubo un error. Por favor, inténtalo de nuevo.</span>
+                  <span>{t("contact.error")}</span>
                 </div>
               )}
 
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#00f0ff] text-[#0b0f19] font-heading font-bold text-sm tracking-wide hover:bg-[#00f0ff]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-[0_0_20px_rgba(0,240,255,0.25)]"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-accent text-on-accent font-heading font-bold text-sm tracking-wide hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-[0_0_20px_var(--p-shadow-accent-sm)]"
               >
                 <Send size={15} />
-                {status === "sending" ? "Enviando..." : "Enviar Mensaje"}
+                {status === "sending" ? t("contact.sending") : t("contact.send")}
               </button>
             </form>
           </div>
@@ -167,26 +168,25 @@ export default function ContactSection() {
           {/* Contact info */}
           <div className="space-y-6 lg:pt-2">
             <div>
-              <h3 className="font-heading font-bold text-white text-2xl mb-2">
-                Contacto Directo
+              <h3 className="font-heading font-bold text-fore text-2xl mb-2">
+                {t("contact.directTitle")}
               </h3>
-              <p className="text-[#94a3b8] text-sm leading-relaxed">
-                Para consultorías, proyectos corporativos o simplemente conectar
-                profesionalmente. Respondo en menos de 24 horas.
+              <p className="text-muted text-sm leading-relaxed">
+                {t("contact.directDesc")}
               </p>
             </div>
 
             <div className="space-y-3">
               <a
                 href="mailto:henridanielpenadequero@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-xl border border-[#1e293b] bg-[#111827] hover:border-[#00f0ff]/30 hover:bg-[#162235] transition-all duration-200 group"
+                className="flex items-center gap-4 p-4 rounded-xl border border-edge bg-card hover:border-accent/30 hover:bg-card-hi transition-all duration-200 group"
               >
-                <div className="flex-shrink-0 p-2.5 rounded-lg bg-[#00f0ff]/10 border border-[#00f0ff]/20">
-                  <Mail size={18} className="text-[#00f0ff]" />
+                <div className="flex-shrink-0 p-2.5 rounded-lg bg-accent/10 border border-accent/20">
+                  <Mail size={18} className="text-accent" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-[#94a3b8] text-xs mb-0.5">Email</div>
-                  <div className="text-white text-sm font-medium group-hover:text-[#00f0ff] transition-colors truncate">
+                  <div className="text-muted text-xs mb-0.5">Email</div>
+                  <div className="text-fore text-sm font-medium group-hover:text-accent transition-colors truncate">
                     henridanielpenadequero@gmail.com
                   </div>
                 </div>
@@ -196,14 +196,14 @@ export default function ContactSection() {
                 href="https://linkedin.com/in/henri-pena"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-xl border border-[#1e293b] bg-[#111827] hover:border-[#00f0ff]/30 hover:bg-[#162235] transition-all duration-200 group"
+                className="flex items-center gap-4 p-4 rounded-xl border border-edge bg-card hover:border-accent/30 hover:bg-card-hi transition-all duration-200 group"
               >
-                <div className="flex-shrink-0 p-2.5 rounded-lg bg-[#00f0ff]/10 border border-[#00f0ff]/20">
-                  <Linkedin size={18} className="text-[#00f0ff]" />
+                <div className="flex-shrink-0 p-2.5 rounded-lg bg-accent/10 border border-accent/20">
+                  <Linkedin size={18} className="text-accent" />
                 </div>
                 <div>
-                  <div className="text-[#94a3b8] text-xs mb-0.5">LinkedIn</div>
-                  <div className="text-white text-sm font-medium group-hover:text-[#00f0ff] transition-colors">
+                  <div className="text-muted text-xs mb-0.5">LinkedIn</div>
+                  <div className="text-fore text-sm font-medium group-hover:text-accent transition-colors">
                     linkedin.com/in/henri-pena
                   </div>
                 </div>
@@ -211,15 +211,15 @@ export default function ContactSection() {
             </div>
 
             {/* Availability notice */}
-            <div className="p-4 rounded-xl border border-[#00f0ff]/20 bg-[#00f0ff]/5">
+            <div className="p-4 rounded-xl border border-accent/20 bg-accent/5">
               <div className="flex items-center gap-2 mb-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-[#00f0ff] text-xs font-heading font-medium">
-                  Disponibilidad Actual
+                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-accent text-xs font-heading font-medium">
+                  {t("contact.label")}
                 </span>
               </div>
-              <p className="text-[#94a3b8] text-xs leading-relaxed">
-                Abierto a proyectos remotos y consultorías freelance.
+              <p className="text-muted text-xs leading-relaxed">
+                {t("contact.description")}
               </p>
             </div>
           </div>

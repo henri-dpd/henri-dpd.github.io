@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* ─── Class-based dark mode ──────────────────────────────── */
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
   --font-heading: var(--font-poppins), "Poppins", sans-serif;
@@ -7,14 +10,60 @@
     "DejaVu Sans Mono", monospace;
 }
 
+/* ─── Light palette (default) ────────────────────────────── */
+:root {
+  --p-space:        #f8fafc;
+  --p-navy:         #f1f5f9;
+  --p-card:         #ffffff;
+  --p-card-hi:      #eff6ff;
+  --p-border:       #e2e8f0;
+  --p-accent:       #2563eb;
+  --p-accent-rgb:   37 99 235;
+  --p-muted:        #64748b;
+  --p-fore:         #0f172a;
+  --p-on-accent:    #ffffff;
+  --p-shadow-accent:    rgba(37, 99, 235, 0.35);
+  --p-shadow-accent-sm: rgba(37, 99, 235, 0.25);
+}
+
+/* ─── Dark palette ───────────────────────────────────────── */
+.dark {
+  --p-space:        #0b0f19;
+  --p-navy:         #0d1224;
+  --p-card:         #111827;
+  --p-card-hi:      #162235;
+  --p-border:       #1e293b;
+  --p-accent:       #00f0ff;
+  --p-accent-rgb:   0 240 255;
+  --p-muted:        #94a3b8;
+  --p-fore:         #ffffff;
+  --p-on-accent:    #0b0f19;
+  --p-shadow-accent:    rgba(0, 240, 255, 0.35);
+  --p-shadow-accent-sm: rgba(0, 240, 255, 0.25);
+}
+
+/* ─── Tailwind semantic tokens ───────────────────────────── */
+@theme inline {
+  --color-space:     var(--p-space);
+  --color-navy:      var(--p-navy);
+  --color-card:      var(--p-card);
+  --color-card-hi:   var(--p-card-hi);
+  --color-edge:      var(--p-border);
+  --color-accent:    var(--p-accent);
+  --color-muted:     var(--p-muted);
+  --color-fore:      var(--p-fore);
+  --color-on-accent: var(--p-on-accent);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #0b0f19;
-  color: #ffffff;
+  background-color: var(--p-space);
+  color: var(--p-fore);
   font-family: var(--font-sans);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* ─── Keyframes ─────────────────────────────────────────── */
@@ -45,8 +94,8 @@ body {
 }
 
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(0,240,255,0.25), 0 0 24px rgba(0,240,255,0.10); }
-  50%       { box-shadow: 0 0 20px rgba(0,240,255,0.55), 0 0 48px rgba(0,240,255,0.22); }
+  0%, 100% { box-shadow: 0 0 8px rgb(var(--p-accent-rgb) / 0.25), 0 0 24px rgb(var(--p-accent-rgb) / 0.10); }
+  50%       { box-shadow: 0 0 20px rgb(var(--p-accent-rgb) / 0.55), 0 0 48px rgb(var(--p-accent-rgb) / 0.22); }
 }
 
 @keyframes shimmer {
@@ -56,8 +105,8 @@ body {
 }
 
 @keyframes border-glow {
-  0%, 100% { border-color: rgba(0,240,255,0.25); }
-  50%       { border-color: rgba(0,240,255,0.65); }
+  0%, 100% { border-color: rgb(var(--p-accent-rgb) / 0.25); }
+  50%       { border-color: rgb(var(--p-accent-rgb) / 0.65); }
 }
 
 /* ─── Scroll-driven animations (progressive enhancement) ─── */
@@ -122,4 +171,37 @@ body {
 
 .animate-border-glow {
   animation: border-glow 2.5s ease-in-out infinite;
+}
+
+/* ─── Themed glow backgrounds ────────────────────────────── */
+.bg-glow-top {
+  background-image: radial-gradient(
+    ellipse 80% 60% at 50% -10%,
+    rgb(var(--p-accent-rgb) / 0.10) 0%,
+    transparent 65%
+  );
+}
+
+.bg-glow-center {
+  background-image: radial-gradient(
+    ellipse 60% 40% at 50% 50%,
+    rgb(var(--p-accent-rgb) / 0.04) 0%,
+    transparent 70%
+  );
+}
+
+.bg-glow-bottom {
+  background-image: radial-gradient(
+    ellipse 60% 40% at 50% 100%,
+    rgb(var(--p-accent-rgb) / 0.04) 0%,
+    transparent 60%
+  );
+}
+
+/* ─── Grid texture overlay ───────────────────────────────── */
+.grid-texture {
+  background-image:
+    linear-gradient(rgb(var(--p-accent-rgb) / 1) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--p-accent-rgb) / 1) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
